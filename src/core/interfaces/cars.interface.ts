@@ -3,4 +3,5 @@ export interface ICar {
     model: string;
     description: string;
     isSold: boolean;
+    image?: string;
 }

@@ -1,6 +1,12 @@
 <template>
   <div class="car-page">
-    <CarItem :car="car"></CarItem>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <CarItem :car="car"></CarItem>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

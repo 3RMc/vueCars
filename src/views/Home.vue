@@ -1,7 +1,19 @@
 <template>
   <div class="home">
-    <Form/>
-    <CarItem v-for="(car, index) of store.state.cars" :car="car" :key="car.id">{{index + 1}}</CarItem>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <b-btn v-b-toggle.collapse1 variant="primary">Добавить автомобиль</b-btn>
+          <b-collapse id="collapse1" class="mt-2">
+            <Form/>
+          </b-collapse>
+        </div>
+      </div>
+      <hr>
+      <div class="row mt-4">
+        <CarItem v-for="(car, index) of store.state.cars" :car="car" :key="car.id" class="col-4">{{index + 1}}</CarItem>
+      </div>
+    </div>
   </div>
 </template>
 

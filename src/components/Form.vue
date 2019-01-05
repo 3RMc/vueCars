@@ -1,16 +1,36 @@
 <template>
     <div class="form">
-        <form v-on:submit.prevent="onSubmitForm">
-            <div class="model">
-                <label for="model">Модель:</label>
-                <input id="model" type="text" name="model" v-model="car.model">
-            </div>
-            <div class="description">
-                <label for="description">Описание:</label>
-                <input id="description" type="text" name="description" v-model="car.description">
-            </div>
-            <button type="submit">Создать</button>
-        </form>
+        <b-form @submit.prevent="onSubmitForm">
+            <b-form-group label="Модель:"
+                          label-for="model">
+                <b-form-input id="model"
+                              type="text"
+                              name="model"
+                              placeholder="Введите модель автомобиля"
+                              v-model="car.model"
+                              required>
+                </b-form-input>
+            </b-form-group>
+            <b-form-group label="Описание:"
+                          label-for="description">
+                <b-form-input id="description"
+                              type="text"
+                              name="description"
+                              placeholder="Введите краткое описание автомобиля"
+                              v-model="car.description">
+                </b-form-input>
+            </b-form-group>
+            <b-form-group label="Изображение:"
+                          label-for="image-link">
+                <b-form-input id="image-link"
+                              type="text"
+                              name="image-link"
+                              placeholder="Вставьте ссылку на изображение"
+                              v-model="car.image">
+                </b-form-input>
+            </b-form-group>
+            <b-button type="submit" variant="warning">Создать</b-button>
+        </b-form>
     </div>
 </template>
 
@@ -24,7 +44,7 @@
         public car: Car = new Car();
 
         public onSubmitForm() {
-            if (this.car.model && this.car.description) {
+            if (this.car.model) {
                 store.dispatch('addCar', this.car).then(() => this.car = new Car());
             }
         }

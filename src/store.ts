@@ -8,12 +8,14 @@ const initialState: Car[] = [
     {
         id: 0,
         model: 'BMW-X5',
+        image: 'https://i.ytimg.com/vi/_j50FirRvnk/hqdefault.jpg',
         description: 'Тачила',
         isSold: false,
     },
     {
         id: 1,
         model: 'Ford Focus',
+        image: 'http://avtodvigateli.com/wp-content/uploads/2017/10/ford-fokus-2-1-8_03.jpg',
         description: 'Бюджетная машина для экономных людей',
         isSold: true,
     },
