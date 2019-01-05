@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Form/>
+    <CarItem v-for="(car, index) of store.state.cars" :car="car" :key="car.id">{{index + 1}}</CarItem>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import Form from '@/components/Form.vue';
+import CarItem from '@/components/CarItem.vue';
+import Car from '@/core/models/cars.model';
+import store from '@/store'; // @ is an alias to /src
 
 @Component({
   components: {
-    HelloWorld,
+    CarItem,
+    Form,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  public store = store;
+}
 </script>
