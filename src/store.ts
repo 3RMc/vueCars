@@ -35,6 +35,9 @@ export default new Vuex.Store({
         deleteCar(state, car: Car) {
             state.cars = state.cars.filter(c => c.id !== car.id);
         },
+        findCars(state, input: string) {
+            return state.cars;
+        }
     },
     actions: {
         addCar({commit}, car: Car) {
@@ -45,11 +48,17 @@ export default new Vuex.Store({
         },
         deleteCar({commit}, car: Car) {
             commit('deleteCar', car)
+        },
+        findCars({commit}, input: string) {
+            commit('findCars', input)
         }
     },
     getters: {
         getCar: (state) => (id: number) => {
             return state.cars.find(car => car.id === Number(id));
+        },
+        findCars: (state) => (input: string) => {
+            return state.cars.filter(c => new RegExp(input.toLowerCase()).test(c.model.toLowerCase()));
         }
     },
 });

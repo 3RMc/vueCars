@@ -7,7 +7,7 @@
                               type="text"
                               name="model"
                               placeholder="Введите модель автомобиля"
-                              v-model="car.model"
+                              v-model.trim="car.model"
                               required>
                 </b-form-input>
             </b-form-group>
@@ -17,7 +17,7 @@
                               type="text"
                               name="description"
                               placeholder="Введите краткое описание автомобиля"
-                              v-model="car.description">
+                              v-model.trim="car.description">
                 </b-form-input>
             </b-form-group>
             <b-form-group label="Изображение:"
@@ -26,7 +26,8 @@
                               type="text"
                               name="image-link"
                               placeholder="Вставьте ссылку на изображение"
-                              v-model="car.image">
+                              pattern="^(http://|https://).+\.[a-z]+$"
+                              v-model.trim="car.image">
                 </b-form-input>
             </b-form-group>
             <b-button type="submit" variant="warning">Создать</b-button>

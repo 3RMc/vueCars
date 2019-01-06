@@ -11,7 +11,7 @@
       </div>
       <hr>
       <div class="row mt-4">
-        <CarItem v-for="(car, index) of store.state.cars" :car="car" :key="car.id" class="col-4">{{index + 1}}</CarItem>
+        <CarItem v-for="(car, index) of cars" :car="car" :key="car.id" class="col-4">{{index + 1}}</CarItem>
       </div>
     </div>
   </div>
@@ -31,6 +31,18 @@ import store from '@/store'; // @ is an alias to /src
   },
 })
 export default class Home extends Vue {
-  public store = store;
+  public cars = store.state.cars;
+  private currentSearchCarsValue = ''
+
+  created() {
+    store.subscribe((mutation, state) => {
+      if (mutation.type === 'findCars') {
+        this.currentSearchCarsValue = mutation.payload;
+        this.cars = store.getters.findCars(mutation.payload);
+      } else if (this.currentSearchCarsValue && (mutation.type === 'addCar' || mutation.type === 'deleteCar')) {
+        store.dispatch('findCars', this.currentSearchCarsValue);
+      }
+    })
+  }
 }
 </script>

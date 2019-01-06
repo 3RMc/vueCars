@@ -20,7 +20,11 @@
                           @click="deleteCar">
                     Удалить
                 </b-button>
-                <router-link class="btn btn-info" :to="'/' + (isCarPage ? '' : car.id)" tag="button">{{ isCarPage ? 'Назад' : 'Перейти'}}</router-link>
+                <router-link class="btn btn-info"
+                             :to="'/' + (isCarPage ? '' : car.id)"
+                             tag="button">
+                    {{ isCarPage ? 'Назад' : 'Перейти'}}
+                </router-link>
             </div>
         </b-card>
     </div>
@@ -59,8 +63,6 @@
     }
 </script>
 
-<style scoped lang="scss">
-    .class {
-        background: red;
-    }
+<style scoped>
+
 </style>

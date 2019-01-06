@@ -10,8 +10,18 @@
                     <b-navbar-nav class="ml-auto">
 
                         <b-nav-form>
-                            <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Искать авто"/>
-                            <b-button size="sm" class="my-2 my-sm-0" type="submit">Поиск</b-button>
+                            <b-form-input size="sm"
+                                          class="mr-sm-2"
+                                          type="text"
+                                          placeholder="Искать авто"
+                                          v-model="searchInput"
+                                          @input="searchCar(searchInput)"/>
+                            <b-button size="sm"
+                                      class="my-2 my-sm-0"
+                                      type="button"
+                                      @click="searchCar(searchInput)">
+                                Поиск
+                            </b-button>
                         </b-nav-form>
                     </b-navbar-nav>
 
@@ -49,8 +59,14 @@
 <script lang="ts">
     import Vue from "vue";
     import {Component} from "vue-property-decorator";
+    import store from '@/store';
 
     @Component
     export default class App extends Vue {
+        public searchInput: string = '';
+
+        public searchCar($event) {
+            store.dispatch('findCars', $event)
+        }
     }
 </script>
